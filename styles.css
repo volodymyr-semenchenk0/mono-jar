@@ -45,11 +45,12 @@ body {
     box-shadow: 0 0 14px rgba(0, 0, 0, 0.2);
 }
 
-.content-card-left {
+.card-left {
     width: 50%;
     display: flex;
     flex-direction: column;
     background: #f3f4f6;
+    padding: 24px;
 }
 
 .content-card-right {
@@ -70,7 +71,7 @@ body {
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .footer-buttons {
@@ -100,3 +101,77 @@ body {
     cursor: pointer;
     background: rgba(255, 255, 255, 0.3);
 }
+
+.short-logo {
+    margin: 20px auto 24px auto;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+}
+
+.field span {
+    margin: auto;
+    text-align: center;
+}
+
+.jar {
+    width: auto;
+    padding: 0 24px;
+    margin: 24px auto 24px auto;
+}
+
+.jar-state {
+    position: relative;
+    margin: auto;
+}
+
+.jar-bg {
+    width: 215px;
+    height: 215px;
+}
+
+.jar-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: scale(.97) translate(-50%, -50%);
+}
+
+.field.owner-info {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000;
+    text-align: center;
+}
+
+.field.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.jar-stats {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 16px;
+}
+
+.jar-stats .stats-data {
+    display: flex;
+    gap: 16px;
+    padding: 0 20px;
+    margin: 12px 0;
+    border-right: solid #e7e7e7 1px;
+}
+
+.jar-stats .stats-data:last-child {
+    border-right: none;
+}
+
+
+
+
