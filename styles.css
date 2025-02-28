@@ -8,9 +8,7 @@
 
 body {
     height: 100vh;
-    font: 16px "Inter", "LatoWeb", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-family: sans-serif;
-    color: #1b1c21;
+    font-family: 'Inter', sans-serif;
     background: #fff;
 }
 
@@ -50,6 +48,7 @@ body {
     display: flex;
     flex-direction: column;
     background: #f3f4f6;
+    gap: 16px;
     padding: 24px;
 }
 
@@ -106,20 +105,11 @@ body {
     margin: 20px auto 24px auto;
 }
 
-.field {
-    display: flex;
-    align-items: center;
-}
-
-.field span {
-    margin: auto;
-    text-align: center;
-}
-
 .jar {
     width: auto;
     padding: 0 24px;
-    margin: 24px auto 24px auto;
+    margin-top: auto;
+    margin-bottom: 8px;
 }
 
 .jar-state {
@@ -139,6 +129,25 @@ body {
     transform: scale(.97) translate(-50%, -50%);
 }
 
+.field {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.field h1 {
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.field span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .field.owner-info {
     font-style: normal;
     font-weight: 500;
@@ -146,12 +155,33 @@ body {
     line-height: 16px;
     color: #000;
     text-align: center;
+    vertical-align: middle;
+}
+
+.field.iban {
+    font-size: 12px;
+    font-weight: 500;
+    color: #808080;
+    display: flex;
+}
+
+.field.iban .iban-label {
+    margin-right: 6px;
+    color: #a8a8a8;
 }
 
 .field.card-info {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
+    margin-bottom: auto;
+}
+
+.field .description-box {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
 }
 
 .jar-stats {
@@ -172,6 +202,22 @@ body {
     border-right: none;
 }
 
+.jar-stats .stats-data .stats-data-text {
+    text-align: left;
+}
 
+.jar-stats .stats-data .stats-data-text .stats-data-label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #808080;
+}
+
+.jar-stats .stats-data .stats-data-text .stats-data-value {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+}
 
 
