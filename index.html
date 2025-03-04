@@ -40,22 +40,90 @@
                             <div class="stats-data">
                                 <img src="https://send.monobank.ua/img/collected.svg" class="icon" alt="Collected" />
                                 <div class="stats-data-text">
-                                    <div class="stats-data-label">Saved</div>
-                                    <div class="stats-data-value">16 187.02 ₴</div>
+                                    <div class="data-label">
+                                        Saved
+                                    </div>
+                                    <div class="data-value">
+                                        16 187.02 ₴
+                                    </div>
                                 </div>
                             </div>
                             <div class="stats-data">
                                 <img src="https://send.monobank.ua/img/target.svg" class="icon" alt="Target" />
                                 <div class="stats-data-text">
-                                    <div class="stats-data-label">Goal</div>
-                                    <div class="stats-data-value">25 000 ₴</div>
+                                    <div class="data-label">
+                                        Goal
+                                    </div>
+                                    <div class="data-value">
+                                        5 000 ₴
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="content-card-right">
-
+                <div class="card-right">
+                    <div class="gradient-container">
+                        <div class="top-up-title">
+                            Top up amount
+                            <img src="https://send.monobank.ua/img/money.png" class="money-emoji" alt="Money Emoji" />
+                        </div>
+                        <div class="money-input-container">
+                            <div class="money-input-block empty">
+                                <div class="money-input-contenteditable" contenteditable="true" inputmode="decimal" spellcheck="false" data-gramm="false">
+                                    0
+                                </div>
+                                <div class="money-input-trailing">
+                                    &nbsp;₴
+                                </div>
+                            </div>
+                            <div class="money-input-subtitle">
+                                Minimum amount: 10&nbsp;₴. Maximum amount: 29&nbsp;999&nbsp;₴
+                            </div>
+                        </div>
+                        <div class="choice-row">
+                            <div class="chip-button">
+                                <div class="data-value">
+                                    +100 ₴
+                                </div>
+                                <div class="data-label">
+                                    +2.28 €
+                                </div>
+                            </div>
+                            <div class="chip-button">
+                                <div class="data-value">
+                                    +500 ₴
+                                </div>
+                                <div class="data-label">
+                                    +11.40 €
+                                </div>
+                            </div>
+                            <div class="chip-button">
+                                <div class="data-value">
+                                    +1 000 ₴
+                                </div>
+                                <div class="data-label">
+                                    22.81 €
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field input-container">
+                        <input id="comment" maxlength="160" autocomplete="off" placeholder=""/>
+                        <label for="comment">Name or comment (optional)</label>
+                    </div>
+                    <div class="field pay-button">
+                        <img src="https://send.monobank.ua/img/mono_pay.svg" class="mono-pay-icon" alt="Mono Pay" />
+                    </div>
+                    <div class="field pay-button">
+                        <img src="https://www.gstatic.com/instantbuy/svg/dark_gpay.svg" class="google-pay-icon" alt="Google Pay" />
+                    </div>
+                    <div class="field manual-pan-trigger">
+                        <div class="card-input-button">
+                            <img src="https://send.monobank.ua/img/card.svg" class="icon" alt="Card Icon" />
+                            Enter card details
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="footer">
@@ -77,5 +145,6 @@
             </div>
         </div>
     </div>
+    <script src="index.js"></script>
 </body>
 </html>
