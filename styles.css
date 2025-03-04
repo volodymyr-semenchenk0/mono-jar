@@ -94,6 +94,12 @@ body {
     background: rgba(255, 255, 255, 0.3);
 }
 
+.button.button-tertiary:focus {
+    outline: none;
+    border: 1px solid #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
 .short-logo {
     margin: 20px auto 24px auto;
 }
@@ -304,13 +310,22 @@ body {
     border-radius: 12px;
     border: 1px solid #ccc;
     background: #ffffff;
-    text-align: center;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .chip-button:hover {
     cursor: pointer;
     background: #efefef;
 }
+
+.chip-button:focus {
+    outline: none;
+}
+
+.chip-button:active {
+    transform: scale(0.95);
+}
+
 
 .card-right .field {
     max-width: 340px;
