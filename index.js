@@ -3,13 +3,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const moneyInput = document.querySelector('.money-input-contenteditable');
     const subtitle = document.querySelector('.money-input-subtitle');
     const chipButtons = document.querySelectorAll('.chip-button');
+    const payButtons = document.querySelectorAll('.pay-button')
+    const commentInput = document.getElementById('comment');
+    const savedAmountElement = document.querySelector('.jar-stats .stats-data:first-child .data-value');
+    const savedAmountContainer = document.querySelector('.jar-stats .stats-data:first-child');
+    const goalAmountElement = document.querySelector('.jar-stats .stats-data:last-child .data-value');
+    const jarImage = document.querySelector('.jar-glass');
 
-    // Общие константы
     const MIN_VALUE = 10;
     const MAX_VALUE = 29999;
     const MIN_FORMATTED_VALUE = 10000;
+    const CURRENCY_SYMBOL = ' ₴';
+    const GOAL_AMOUNT = 10000;
 
-    // Утилитные функции
+    let totalSaved = parseInt(localStorage.getItem('totalSaved')) || 0;
+
+    savedAmountElement.textContent = formatNumber(totalSaved) + CURRENCY_SYMBOL;
+    goalAmountElement.textContent = formatNumber(GOAL_AMOUNT) + CURRENCY_SYMBOL;
+
+    const updateJarImage = () => {
+        const progressPercent = (totalSaved / GOAL_AMOUNT) * 100;
+
+        if (totalSaved === 0) {
+            jarImage.src = "https://send.monobank.ua/img/jar/0.png";
+            savedAmountContainer.style.display = 'none';
+
+        } else if (progressPercent >= 100) {
+            jarImage.src = "https://send.monobank.ua/img/jar/uah_100.png";
+        } else if (progressPercent >= 50) {
+            jarImage.src = "https://send.monobank.ua/img/jar/uah_50.png";
+        } else {
+            jarImage.src = "https://send.monobank.ua/img/jar/uah_33.png";
+            savedAmountContainer.style.display = '';
+        }
+    };
+
     const sanitizeValue = (value) => parseInt(value.trim().replace(/\D/g, ''), 10) || 0;
 
     const updateInputState = (value) => {
@@ -26,7 +54,25 @@ document.addEventListener('DOMContentLoaded', () => {
         return value >= MIN_FORMATTED_VALUE ? formatNumber(value) : value.toString();
     };
 
-    // Основной обработчик ввода
+    const updateSavedAmount = (newAmount) => {
+        totalSaved += newAmount;
+
+        localStorage.setItem('totalSaved', totalSaved);
+        savedAmountElement.textContent = formatNumber(totalSaved) + CURRENCY_SYMBOL;
+
+        updateJarImage();
+    };
+
+    const resetFields = () => {
+        moneyInput.textContent = '0';
+
+        inputBlock.classList.remove('incorrect');
+        inputBlock.classList.add('empty');
+        subtitle.classList.remove('hidden');
+
+        commentInput.value = '';
+    };
+
     const handleMoneyInput = () => {
         let value = sanitizeValue(moneyInput.textContent);
         moneyInput.textContent = formatInputValue(value);
@@ -34,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateInputState(value);
     };
 
-    // Обработчик чип-кнопок
     const handleChipClick = (chip) => {
         const chipValue = sanitizeValue(chip.querySelector('.data-value').textContent);
         let currentValue = sanitizeValue(moneyInput.textContent);
@@ -47,22 +92,49 @@ document.addEventListener('DOMContentLoaded', () => {
         subtitle.classList.add('hidden');
     };
 
-    // Навешивание обработчиков
-    moneyInput.addEventListener('input', handleMoneyInput);
-    chipButtons.forEach(chip => chip.addEventListener('click', () => handleChipClick(chip)));
+    const handlePayButtonClick = (button) => {
+        const amount = sanitizeValue(moneyInput.textContent);
+        const comment = commentInput.value.trim();
 
-    // Обработка клика вне инпута
+        if (amount < MIN_VALUE) {
+            console.error(`Amount must be at least ${MIN_VALUE}. `);
+            return;
+        }
+
+        console.log(`Payment Method: ${button}`, {
+            amount: amount,
+            comment: comment || 'No comment'
+        });
+
+        resetFields();
+
+        updateSavedAmount(amount);
+    }
+
+    moneyInput.addEventListener('input', handleMoneyInput);
+
+    chipButtons.forEach(chip =>
+        chip.addEventListener('click', () => handleChipClick(chip))
+    );
+
+    payButtons.forEach(button =>
+        button.addEventListener('click', () => {
+            const payButton = button.querySelector('img').alt;
+            handlePayButtonClick(payButton);
+        })
+    );
+
     document.addEventListener('click', (e) => {
         if (!inputBlock.contains(e.target)) {
             moneyInput.blur();
         }
     });
 
-    // Установка курсора в конец при загрузке
     placeCaretAtEnd(moneyInput);
+
+    updateJarImage();
 });
 
-// Утилитные функции для работы с Dom
 function placeCaretAtEnd(el) {
     el.focus();
     if (typeof window.getSelection !== "undefined" && typeof document.createRange !== "undefined") {

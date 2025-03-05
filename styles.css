@@ -172,6 +172,7 @@ body {
 .field.card-info {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 12px;
     margin-bottom: auto;
 }
@@ -185,8 +186,10 @@ body {
 
 .jar-stats {
     display: flex;
+    justify-content: center;
     background-color: #ffffff;
     border-radius: 16px;
+    max-width: fit-content;
 }
 
 .jar-stats .stats-data {
@@ -310,12 +313,13 @@ body {
     border-radius: 12px;
     border: 1px solid #ccc;
     background: #ffffff;
-    -webkit-tap-highlight-color: transparent;
+
+    transition: all 0.3s ease;
 }
 
 .chip-button:hover {
     cursor: pointer;
-    background: #efefef;
+    transform: scale(1.03);
 }
 
 .chip-button:focus {
@@ -323,6 +327,7 @@ body {
 }
 
 .chip-button:active {
+    background: #efefef;
     transform: scale(0.95);
 }
 
@@ -341,7 +346,7 @@ body {
 
 .input-container input {
     width: 100%;
-    padding: 0 16px;
+    padding: 8px 16px 0 16px;
     min-height: 64px;
     font-size: 16px;
     line-height: 20px;
@@ -362,17 +367,17 @@ body {
 }
 
 .input-container input:hover {
-    box-shadow: 0 0 0 3px #e5e5e5;
+    box-shadow: 0 0 0 2px #e8e8e8;
 }
 
 .input-container input:focus {
     border: 1px solid #838383;
-    box-shadow: 0 0 0 3px #dadada;
+    box-shadow: 0 0 0 3px #e8e8e8;
 }
 
 .input-container input:hover + label,
 .input-container input:not(:placeholder-shown) + label {
-    top: 11px;
+    top: 14px;
     font-size: 11px;
     line-height: 16px;
     color: #606060;
@@ -385,6 +390,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
+}
+
+.card-right .pay-button:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+}
+
+.card-right .pay-button:active {
+    transform: scale(0.97);
 }
 
 .google-pay-icon {
